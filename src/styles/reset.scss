@@ -1,0 +1,40 @@
+@import './variables.scss';
+
+:root{
+    font-size: 62.5%;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    text-decoration: none;
+
+
+}
+
+// html {
+//     background: orange;
+// }
+
+#root{
+    height: 100vh;
+    width: 100vw;
+}
+
+.XD{
+    background: $dark3;
+}
+
+
+
+@media only screen and (max-width: 400px) {
+    :root {
+        font-size: 50%;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    :root{
+        font-size: 50%;
+    }
+}

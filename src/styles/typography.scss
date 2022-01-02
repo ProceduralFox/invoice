@@ -1,0 +1,126 @@
+@import './variables.scss';
+
+.h1 {
+    font-family: $font;
+    font-style: bold;
+    font-weight: 700;
+
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+    letter-spacing: -1px;
+
+    margin: 0;
+}
+
+.h2{
+    font-family: $font;
+    font-style: bold;
+    font-weight: 700;
+
+    font-size: 2rem;
+    line-height: 2.2rem;
+    letter-spacing: -0.63px;
+
+    margin: 0;
+
+    &_2{
+        font-family: $font;
+        font-size: 2.4rem;
+        font-style: normal;
+
+        font-weight: 700;
+        line-height: 3.2rem;
+        letter-spacing: -0.5px;
+
+        margin: 0;
+
+    }
+
+}
+
+.h3{
+    font-family: $font;
+    font-style: bold;
+    font-weight: 700;
+
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: -0.8px;
+
+    margin: 0;
+
+    &_2{
+        font-family: $font;
+        font-style: bold;
+        font-weight: 700;
+
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        letter-spacing: -0.25px;
+
+        margin: 0;
+    }
+
+    &_3{
+        font-family: $font;
+        font-size: 1.5rem;
+
+        font-weight: 700;
+        line-height: 2rem;
+        letter-spacing: -0.3125px;
+        text-align: left;
+
+        margin: 0;
+
+    }
+}
+
+h4{
+    font-family: $font;
+    font-size: 1.8rem;
+
+    font-style: normal;
+
+    font-weight: 700;
+    line-height: 3.2rem;
+
+    letter-spacing: -0.375px;
+    text-align: left;
+}
+
+.body_1{
+    font-family: $font;
+    font-weight: 500;
+
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.25px;
+
+    margin: 0;
+}
+
+.body_2{
+    font-family: $font;
+    font-weight: 500;
+
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    letter-spacing: -0.23px;
+
+    margin: 0;
+}
+
+@media only screen and (max-width: 690px) {
+    .h1{
+        font-size: 2rem;
+        line-height: 2.2rem;
+        letter-spacing: -0.625px;
+        text-align: left;
+
+    }
+    
+    .h2_2{
+        font-size: 2rem;
+    }
+
+}

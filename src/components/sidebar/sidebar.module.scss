@@ -1,0 +1,93 @@
+@import '../../styles/variables.scss';
+
+.body{
+    height: 100vh;
+    max-width: 7vw;
+
+    z-index: 6;
+
+    background: hsla(231, 20%, 27%, 1);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    border-radius: 0 25px 25px 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+.top{
+    max-width: 7vw;
+}
+
+.user{
+    width: 4rem;
+    height: 4rem;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    &_first{
+        height: 7.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+    }
+
+    &_second{
+        height: 8.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-top: 1px solid #979797;
+
+        color: $light1;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .body {
+        height: 8rem;
+        max-width: 100vw;
+        width: 100vw;
+
+
+        flex-direction: row;
+        overflow: hidden;
+
+        border-radius: 0;
+
+    }
+
+    .bottom{
+        flex-direction: row;
+        overflow: hidden;
+
+        &_first{
+            width: 7.6rem;
+            height: 8rem;
+        }
+
+        &_second{
+            width: 8.7rem;
+            height: 8rem;
+            border-top: none;
+            border-left: 1px solid #979797;
+        }
+    }
+
+    .top{
+        max-width: 8rem;
+    }
+}

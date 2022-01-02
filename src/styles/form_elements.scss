@@ -1,0 +1,48 @@
+@import './variables.scss';
+
+input, textarea, select { 
+    font-family:inherit; 
+
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
+    letter-spacing: -0.25px;
+    text-align: left;
+
+
+}
+
+
+.form_element{
+    width: 50rem;
+    height: 4.8rem;
+    border-radius: 4px;
+
+    text-align: left;
+    text-indent: 1rem;
+
+    transition: all .2s;
+
+    outline: none;
+
+    font-family: $font;
+
+    &_small{
+        width: 15.2rem;
+    }
+
+    &_light{
+        border: 1px solid #DFE3FA;
+        background: #FFFFFF;
+        color: #0C0E16;
+
+        &:focus{
+            border: 1px solid purple;
+
+            &-visible{
+                border: 1px solid purple;
+            }
+        }
+    }
+}

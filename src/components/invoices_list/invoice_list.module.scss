@@ -1,0 +1,315 @@
+@import '../../styles/variables.scss';
+
+.body{
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.dark{
+    >p{ 
+        color: $light1;
+    }
+
+    >h2{
+        color: #FFFFFF;
+    }
+
+    >.popup{
+        background: $dark1;
+
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    >label::before{
+        background: $dark3;
+    }
+
+
+}
+
+input{
+    margin-right: 1  
+    
+    rem;
+}
+.light{
+
+    
+    >p{
+        color: $medium2
+    }
+
+    >h2{
+        color: $dark3;
+    }
+
+    >.popup{
+        background: #FFFFFF;
+
+        box-shadow: 0px 4px 4px 0px #00000040;
+
+    }
+
+    >label::before{
+        background: $light1;
+    }
+
+}
+
+.top{
+    width: 73rem;
+    height: 10rem;
+
+    margin-top: 7.2rem;
+    margin-bottom: 6.5rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    >:nth-child(1){
+        margin-right: auto;
+    }
+
+    position: relative;
+}
+
+.popup__hidden{
+    width: 19.2rem;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    border-radius: 8px;
+
+    transition: all .4s;
+
+    background: white;
+
+    position: absolute;
+    top: -50;
+    right: 10rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.popup__visible{
+    width: 19.2rem;
+    height: 12.8rem;
+    z-index: 5;
+    transition: all .4s;
+    opacity: 1;
+    border-radius: 8px;
+
+    position: absolute;
+    top: -50;
+    right: 10rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.popup__inner{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+    margin: 0;
+
+    align-items:flex-start;
+    justify-content: space-evenly;
+
+
+
+}
+
+input[type="checkbox"]{
+    opacity: 0;
+}
+
+
+input[type="checkbox"]:checked +label::before{
+    background: url("./checkbox.svg") $darkPurple;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+label{
+    position: relative;
+
+    transition: all 0.5s;
+
+    text-transform: capitalize;
+
+    margin-left: 10px;
+
+    &:hover{
+        color: $lightPurple;
+    }
+}
+
+label::before{
+    content: "";
+    width: 1.7rem;
+    height: 1.7rem;
+
+    border-radius: 3px;
+
+
+    position: absolute;
+
+    top: -3px;
+    left: -30px;
+
+
+}
+
+li{
+    list-style: none;
+    width: 100%;
+
+    display: grid;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 2.4rem 1.6rem 1.3rem auto;
+
+    :nth-child(1){
+        grid-column: 2 / span 1;
+    }
+    
+    :nth-child(2){
+        grid-column: 4 / span 1;
+    }
+    
+}
+
+
+
+.main{
+    overflow-y: auto;
+    
+    > *{
+        margin-bottom: 1.6rem;
+    }
+    max-height: 80rem;
+}
+
+.filter{
+    margin-right: 4rem;
+
+    &::after{
+            content: "";
+            border: solid $darkPurple;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+
+            margin-left: 1.6rem;
+
+            transition: all .4s;
+    }
+}
+
+.filter_up{
+    margin-right: 4rem;
+
+    &::after{
+            content: "";
+            border: solid $darkPurple;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+
+            margin-left: 1.6rem;
+
+            transition: all .4s;
+    }
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 15rem;
+
+}
+
+
+@media only screen and (max-width: 900px) {
+    .top {
+      width: 67.2rem;
+      margin-top: 13rem;
+    }
+
+}
+
+@media only screen and (max-width: 690px) {
+    .top {
+      width: 90vw;
+    }
+
+    .add {
+        width: 9rem;
+    }
+
+    .filter{
+        margin-right: 2rem;
+
+        font-family: Spartan;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 15px;
+        letter-spacing: -0.25px;
+        text-align: right;
+
+
+        &::after{
+            margin-left: 1rem;
+        }
+    }
+
+    .filter_up{
+        margin-right: 2rem;
+
+        font-family: Spartan;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 15px;
+        letter-spacing: -0.25px;
+        text-align: right;
+
+        &::after{
+            margin-left: 1rem;
+        }
+    }
+
+}

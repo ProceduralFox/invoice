@@ -1,0 +1,445 @@
+@import '../../styles/variables.scss';
+
+////////////////////////////////////// LAYOUT ////////////////////////////////////////
+
+.body{
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background: rgba(0, 128, 0, 0.377);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transition: all .2s;
+}
+
+
+.main{
+    width: 40vw;
+    height: 100vh;
+
+    border-radius: 1.5rem;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+}
+
+.inner{
+    width: 29vw;
+    height: 100%;
+
+    overflow-y: auto;
+
+    margin-right: 0;
+
+    margin-left: 6.5vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+
+    >div{
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 1.7vmin;
+
+        >div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 26vw;
+
+            >div{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    >.grid{
+        display: grid;
+        grid-template-columns: 1fr;
+
+        row-gap: 1.8rem;
+
+        margin-bottom: 1.8rem;
+        
+        >div {
+            display: grid;
+            grid-template-rows: 1;
+
+
+            grid-template-columns: 11.2vw 2.4vw 5vw 2.2vw 1.2vw;
+
+
+            column-gap: 0.9vw;
+
+
+        }
+         
+
+    }
+
+
+}
+
+label{
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+
+////////////////////////////////////// FORM ELEMENTS ////////////////////////////////////////
+
+.form_element{
+    height: 4.8rem;
+    border-radius: 4px;
+
+    text-align: left;
+    text-indent: 1rem;
+
+    transition: all .2s;
+
+    outline: none;
+
+
+}
+
+.short{
+    width: 8vw
+}
+
+.long{
+    width: 26vw;
+}
+
+.select{
+    width: 12.5vw;
+}
+
+.items_long{
+    width: 11.2vw;
+}
+
+.items_medium{
+    width: 5vw;
+}
+
+.items_short{
+    width: 2.4vw;
+}
+
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(autofit, 4.8rem);
+
+
+    &_item{
+        width: 26vw;
+    }
+
+
+}
+
+
+////////////////////////////////////// LIGHT AND DARK MODE ////////////////////////////////////////
+
+
+.dark{
+    background: $dark3;
+
+    > label:not(.error), em, p{
+        color: $light1;
+        font-style: normal;
+    }
+
+    >.form_element{
+        border: 1px solid $medium3;
+        background: $dark1;
+        color: #FFFFFF;
+
+        &:focus{
+            border: 1px solid $darkPurple;
+
+            &-visible{
+                border: 1px solid $darkPurple;
+            }
+        }
+    }
+
+    >.cancel{
+        background: $medium3;
+        color: $light1;
+    }
+}
+
+.light{
+    background: #FFFFFF;
+
+    > label:not(.error){
+        color: $medium1;
+    }
+
+    > em,p {
+        color: $medium2;
+        font-style: normal;
+    }
+
+    >.form_element{
+        border: 1px solid $light1;
+        background: #FFFFFF;
+        color: $dark3;
+
+        &:focus{
+            border: 1px solid $lightPurple;
+
+            &-visible{
+                border: 1px solid $lightPurple;
+            }
+        }
+    }
+
+    >.cancel{
+        background:hsla(240, 27%, 98%, 1);
+        color: $medium1;
+    }
+}
+
+
+
+////////////////////////////////////// MISC ////////////////////////////////////////
+
+
+.error{
+    color: red;
+}
+
+div.buttons{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: flex-end;
+    align-items: center;
+    width: 26vw;
+}
+
+.discard{
+    margin-right: auto;
+}
+
+.purple{
+    color: $darkPurple;
+
+    margin-right: auto;
+}
+
+.cancel{
+    height: 4.8rem;
+    width: 9.6rem;
+    border-radius: 2.4rem;
+
+}
+
+
+h1 > span{
+    color: grey;
+}
+
+.items_title{
+    color: hsla(225, 14%, 53%, 1);
+
+    align-self: flex-start;
+
+}
+
+.title{
+    margin-bottom: 7vh;
+    margin-top: 3vh;
+}
+
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+
+}
+
+.light::-webkit-scrollbar-thumb {
+    background: $light1;
+    border-radius: 100vw;
+    
+}
+
+.dark::-webkit-scrollbar-thumb{
+    background: $medium3;
+    border-radius: 100vw;
+
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .main {
+      width: 65rem;
+    }
+
+    .title{
+        margin-top: 10rem;
+    }
+
+    .inner{
+        width: 58rem;
+        margin-left: 5.6rem;
+        padding: 0;
+
+        >div{
+            >div{
+                width: 51rem;
+            }
+        }
+    }
+
+    .form_element{
+        height: 4.8rem;
+        border-radius: 4px;
+    
+        text-align: left;
+        text-indent: 1rem;
+    
+        transition: all .2s;
+    
+        outline: none;
+    
+    
+    }
+    
+    .short{
+        width: 15.2rem
+    }
+    
+    .long{
+        width: 50.4rem;
+    }
+    
+    .select{
+        width: 24rem;
+    }
+    
+    .items_long{
+        width: 15rem;
+    }
+    
+    .items_medium{
+        width: 10rem;
+    }
+    
+    .items_short{
+        width: 4.6rem;
+    }
+
+    .grid{    
+        &_item{
+            width: 51rem;
+        }
+    }
+
+    div.buttons{
+        width: 51rem;
+    }
+}
+
+
+@media only screen and (max-width: 425px) {
+    .main{
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 690px) {
+    .main{
+        width: 100vw;
+    }
+
+    .inner{
+        width: 80%;
+        padding: 0;
+
+        >div{
+            >div{
+                width: 75vw;
+            }
+        }
+    }
+
+    .form_element{
+        height: 4.8rem;
+        border-radius: 4px;
+    
+        text-align: left;
+        text-indent: 1rem;
+    
+        transition: all .2s;
+    
+        outline: none;
+    
+    
+    }
+    
+    .short{
+        width: 22vw
+    }
+    
+    .long{
+        width: 75vw;
+    }
+    
+    .select{
+        width: 36vw;
+    }
+    
+    .items_long{
+        width: 20vw;
+    }
+    
+    .items_medium{
+        width: 10vw;
+    }
+    
+    .items_short{
+        width: 9vw;
+    }
+
+    .grid{    
+        &_item{
+            width: 75vw;
+        }
+    }
+
+    div.buttons{
+        width: 75vw;
+    }
+
+
+}
