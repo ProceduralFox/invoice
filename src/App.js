@@ -45,11 +45,11 @@ function App({ mode, changeMode, data, setData, toggleForm }) {
   if(loaded){
     return (
       <div className={`App ${mode.light ? 'light' : 'dark'}`}>
+        <Sidebar></Sidebar>  
         <Switch>
           <Route exact path='/' component={MainPage}></Route>
           <Route path ='/id/:id' component={ViewPage}></Route>
         </Switch>
-        <Sidebar></Sidebar>  
       </div>
     );
   } else {

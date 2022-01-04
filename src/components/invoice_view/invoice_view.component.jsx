@@ -61,7 +61,7 @@ const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleFor
     // }
 
     return (
-        <div className="page">
+        // <div className="page">
         <div className={styles.body}>
             <div className={`${styles.back} ${mode.light ? styles.back_light : styles.back_dark}`}>
                 <h2 className={`h3_2`} tabindex={0} onClick={()=>{history.push("/")}}>Go back</h2>
@@ -187,7 +187,7 @@ const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleFor
             }
             
         </div>
-        </div> 
+        // </div> 
      );
 }
  

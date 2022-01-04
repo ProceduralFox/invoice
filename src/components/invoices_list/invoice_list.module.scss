@@ -2,7 +2,6 @@
 
 .body{
     background: transparent;
-    height: 100vh;
     width: 100vw;
 
     display: flex;
@@ -10,6 +9,8 @@
 
     justify-content: flex-start;
     align-items: center;
+
+    overflow: hidden;
 }
 
 
@@ -68,8 +69,8 @@ input{
     width: 73rem;
     height: 10rem;
 
-    margin-top: 7.2rem;
-    margin-bottom: 6.5rem;
+    // margin-top: 7.2rem;
+    // margin-bottom: 6.5rem;
 
     display: flex;
     justify-content: flex-end;
@@ -201,12 +202,21 @@ li{
 
 
 .main{
-    overflow-y: auto;
     
     > *{
+
         margin-bottom: 1.6rem;
     }
-    max-height: 80rem;
+
+    >div:nth-child(1){
+        margin-top: 1.6rem;
+    }
+    height: 70vh;
+
+    overflow: auto;
+
+    // display: none;
+
 }
 
 .filter{
@@ -265,7 +275,6 @@ li{
 @media only screen and (max-width: 900px) {
     .top {
       width: 67.2rem;
-      margin-top: 13rem;
     }
 
 }
