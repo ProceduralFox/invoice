@@ -8,14 +8,12 @@ import { changeMode, toggleForm } from "../../redux/mode/mode.actions";
 import styles from "./invoice_view.module.scss"
 
 import { doc, deleteDoc, setDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
 
 
 const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleForm }) => {
 
-    const [ID, setId] = useState(slug)
-    const [loaded, setLoaded] = useState(false)
-    const [history, setHistory] = useState(useHistory())
+    const [ID] = useState(slug)
+    const [history] = useState(useHistory())
     const [screen, setScreen] = useState(window.innerWidth)
 
     useEffect(()=>{

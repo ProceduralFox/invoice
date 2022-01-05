@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { editData, setData } from '../../redux/data/data.actions';
 import { changeMode, toggleForm } from '../../redux/mode/mode.actions';
@@ -223,10 +223,8 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
         return id
     }
 
-    const [date, setDate] = useState("0")
-    const [required, setRequired] = useState(false)
-    const [invoice, setInvoice] = useState(invoiceConditional(edit=edit))
-    const [items, setItems] = useState(itemsConditional(edit=edit))
+    const [invoice, setInvoice] = useState(invoiceConditional(edit))
+    const [items, setItems] = useState(itemsConditional(edit))
     const [errors, setErrors] = useState({
     clientAddress: {
         city: "",
@@ -247,13 +245,6 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
     const [payment, setPayment] = useState("Net 30 Days")
 
 
-
-    useEffect(()=>{
-
-        setInvoice(invoiceConditional(edit))
-        setItems(itemsConditional(edit))
-    }, [mode.form])
-
     if(mode.form){
     return ( 
         <div className={`${mode.form ? styles.body : styles.body__hidden}`} onClick={(e)=>{const target = e.currentTarget; console.log(target, e.target)}}>
@@ -268,7 +259,7 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
 
                     <div className={`${mode.light ? styles.light : styles.dark}`}>
                         <label htmlFor="street_our">Street Address</label> <label className={styles.error} htmlFor="street_our">{errors.senderAddress.street}</label>
-                        <input className={`${styles.form_element} ${styles.long}`} type="text" id="street_our" required={required} value={invoice.senderAddress.street} onChange={(e)=>setInvoice({...invoice, senderAddress: {...invoice.senderAddress, street: e.target.value} })}></input>
+                        <input className={`${styles.form_element} ${styles.long}`} type="text" id="street_our" value={invoice.senderAddress.street} onChange={(e)=>setInvoice({...invoice, senderAddress: {...invoice.senderAddress, street: e.target.value} })}></input>
                     </div>
 
                     <div className={`${mode.light ? styles.light : styles.dark}`}>
@@ -406,12 +397,12 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
                     {
                         edit ?
                         <div className={`${mode.light ? styles.light : styles.dark} ${styles.buttons}`}> 
-                            <button type="button" className="btn_1 h3_2" onClick={()=>toggleForm()}>Cancel</button>
+                            <button type="button" className="btn_1 h3_2" onClick={()=>{toggleForm(); setInvoice(invoiceConditional(edit)); setItems(itemsConditional(edit))}}>Cancel</button>
                             <button type="button" className={`${mode.light ? 'btn_4_light' : 'btn_4_dark'} h3_2`} onClick={(e)=>{e.preventDefault(); submit(false)}}>Save Change</button>
                         </div>
                         :
                         <div className={`${mode.light ? styles.light : styles.dark} ${styles.buttons}`}> 
-                            <button type="button" className={`btn_1 h3_2 ${styles.discard} ${styles.cancel}`} onClick={()=>toggleForm()}>Discard</button>
+                            <button type="button" className={`btn_1 h3_2 ${styles.discard} ${styles.cancel}`} onClick={()=>{toggleForm(); setInvoice(invoiceConditional(edit)); setItems(itemsConditional(edit))}}>Discard</button>
                             <button type="button" className={`${mode.light ? 'btn_4_light' : 'btn_4_dark'} h3_2`} onClick={(e)=>{e.preventDefault(); submit(true)}} >Save as Draft</button>
                             <button type="button" className={`btn_2 h3_2`} onClick={(e)=>{e.preventDefault(); submit(false)}}>Save &amp; Send</button>
                         </div>

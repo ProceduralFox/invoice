@@ -6,7 +6,6 @@ import InvoicesItem from "../invoices_list_item/invoices_item.component";
 
 import styles from "./invoice_list.module.scss";
 
-import Checkbox from './checkbox.svg';
 import Buttonplus from './buttonplus.svg';
 import { auth } from "../../firebase/firebase.utils";
 
@@ -15,7 +14,7 @@ const InvoicesList = ({ mode, data, changeMode, toggleForm }) => {
 
     const [sortBy, setSortBy] = useState(false)
     const [sorting, setSorting] = useState( new Array(3).fill(false))
-    const [category, setCategory] = useState(["draft", "paid", "pending"])
+    const [category] = useState(["draft", "paid", "pending"])
     const [toggled, setToggled] = useState(false)
     const [onlyOwn, setOnlyOwn] = useState(false)
     const [screen, setScreen] = useState(window.innerWidth)
@@ -133,7 +132,7 @@ const InvoicesList = ({ mode, data, changeMode, toggleForm }) => {
                         }                  
                     }
 
-                    return
+                    return null
 
                 })
                 :
