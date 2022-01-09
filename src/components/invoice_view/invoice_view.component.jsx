@@ -9,6 +9,8 @@ import styles from "./invoice_view.module.scss"
 
 import { doc, deleteDoc, setDoc } from "firebase/firestore";
 
+import { auth } from '../../firebase/firebase.utils';
+
 
 const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleForm }) => {
 
@@ -18,9 +20,7 @@ const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleFor
 
     useEffect(()=>{
         function handle_resize(){
-            setScreen(window.innerWidth)
-            console.log(window.innerWidth)
-            
+            setScreen(window.innerWidth)         
         }
 
         window.addEventListener('resize', handle_resize)
@@ -44,31 +44,44 @@ const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleFor
     }
 
     const markPaid = async () => {
-        const tempData = {...data}
-        tempData[ID].status = "paid"
 
-        await setDoc(doc(db, "invoices", ID), tempData[ID]);
+        if(data[ID].uid === auth.currentUser.uid){
+            const tempData = {...data}
+            tempData[ID].status = "paid"
 
-        setData(tempData)
+            try {
+                await setDoc(doc(db, "invoices", ID), tempData[ID]);
+
+                setData(tempData)
+            } catch {
+                window.alert("Rejected by backend. Most likely insufficient permissions.")
+                console.log("Rejected by backend. Most likely insufficient permissions.")
+            }
+
+        } else {
+            window.alert("You do not have sufficient permissions for this action")
+            console.log("You do not have sufficient permissions for this action")
+        }
+
+
     }
 
-    // if(true){
-    //     return (
-    //         <div className="XD">Hello</div>
-    //     )
-    // }
-
     return (
-        // <div className="page">
+        <div className={styles.page}>
         <div className={styles.body}>
             <div className={`${styles.back} ${mode.light ? styles.back_light : styles.back_dark}`}>
                 <h2 className={`h3_2`} tabindex={0} onClick={()=>{history.push("/")}}>Go back</h2>
             </div>
             <div className={`${styles.top} ${mode.light ? styles.light : styles.dark}`}>
 
-                <div className="">
-                    <h2>Status</h2>
-                    <h1 className="body_2">{data[ID].status}</h1>
+                <div className={`${styles.top_status} ${mode.light ? styles.light : styles.dark}`}>
+                    <p className={`${styles.status_text} body_1`}>Status</p>
+                </div>
+
+                <div className={`h3 ${styles.status} ${data[ID].status==="pending" ? styles.status__pending :  data[ID].status==="paid" ? styles.status__paid : mode.light ? styles.status__draft__light : styles.status__draft__dark}`}> 
+                    <div className={`${data[ID].status==="pending" ? styles.status__pending__text : data[ID].status==="paid" ? styles.status__paid__text : mode.light ? styles.status__draft__text__light : styles.status__draft__text__dark}`}> 
+                        <h2 className="h3_2">{data[ID].status}</h2>
+                    </div>
                 </div>
 
                 {
@@ -185,7 +198,7 @@ const InvoiceView = ({ mode, data, changeMode, setData, invoice, slug, toggleFor
             }
             
         </div>
-        // </div> 
+        </div> 
      );
 }
  

@@ -26,7 +26,6 @@ function App({ mode, changeMode, data, setData, toggleForm }) {
       const temp = {}
       const querySnapshot = await getDocs(collection(db, "invoices"));
           querySnapshot.forEach((doc) => {
-              console.log(`${doc.id} => ${doc.data().status}`);
               temp[doc.id] = doc.data()
             });
       setData(temp)

@@ -135,13 +135,13 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
             // invoice is being EDITED cause uid is not an empty string, so nothing needs to happen as if the wrong user is editing it still won't go through due to back end security
             
         } else {
-         // invoice is being CREATED cause uid is not an empty string
+         // invoice is being CREATED cause uid is an empty string
             if(auth.currentUser){
                 const tempUid = auth.currentUser.uid
 
                 tempInvoice.uid = tempUid
-                console.log("tempInvoice is", tempInvoice)
             } else {
+                window.alert("You are either not logged in or attempting to edit or delete an invoice which you did not create!")
                 console.log("You are trying to write a new invoice even though you are not signed in. Please sign in using Github in the bottom left corner")
             }
         }
@@ -153,10 +153,11 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
                 toggleForm()
             } catch (error) {
                 window.alert("You are either not logged in or attempting to edit or delete an invoice which you did not create!")
+                console.log("You are either not logged in or attempting to edit or delete an invoice which you did not create!")
             }
 
         } else {
-            console.log("don't write data")
+            console.log("Input wasn't valid.")
         }
     }
 

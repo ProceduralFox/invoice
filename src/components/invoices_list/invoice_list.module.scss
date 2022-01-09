@@ -23,6 +23,10 @@
         color: #FFFFFF;
     }
 
+    >.filter_text{
+        color: #FFFFFF;
+    }
+
     >.popup{
         background: $dark1;
 
@@ -41,6 +45,7 @@ input{
     
     rem;
 }
+
 .light{
 
     
@@ -133,6 +138,8 @@ input{
 
     align-items:flex-start;
     justify-content: space-evenly;
+
+    overflow: auto;
 
 
 
@@ -282,6 +289,10 @@ li{
 @media only screen and (max-width: 690px) {
     .top {
       width: 90vw;
+    }
+
+    .main{
+        height: 100%;
     }
 
     .add {

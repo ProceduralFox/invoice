@@ -74,7 +74,7 @@ const InvoicesList = ({ mode, data, changeMode, toggleForm }) => {
                                 return (
                                     <li key={index} className={`${mode.light ? styles.light : styles.dark}`}>
                                         <input className={`${styles.checkbox} ${styles.pointer}`} type="checkbox" id={`sorting_${index}`} value={element} checked={sorting[index]} onChange={()=>handleSort(index)} />
-                                        <label className={`h3_2 ${styles.pointer}`} htmlFor={`sorting_${index}`}>{element}</label>
+                                        <label className={`h3_2 ${styles.pointer} ${styles.filter_text}`} htmlFor={`sorting_${index}`}>{element}</label>
                                     </li>
                                 )
                             })
@@ -82,14 +82,20 @@ const InvoicesList = ({ mode, data, changeMode, toggleForm }) => {
 
                        <li key={"own"} className={`${mode.light ? styles.light : styles.dark}`}>
                             <input className={`${styles.checkbox} ${styles.pointer}`} type="checkbox" id="own" value={"test"} checked={onlyOwn} onChange={()=>setOnlyOwn(!onlyOwn)} />
-                            <label className={`h3_2 ${styles.pointer}`} htmlFor={"own"}>Show only my invoices</label>
+                            <label className={`h3_2 ${styles.pointer} ${styles.filter_text}`} htmlFor={"own"}>Show only my invoices</label>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div className="">
-                <button onClick={()=>{toggleForm()}} className={`btn_2 ${styles.pointer} ${styles.add}`}> <img src={Buttonplus} alt="" />
+                <button onClick={()=>{toggleForm()}} className={`btn_2 ${styles.pointer} ${styles.add}`}> 
+                {
+                    screen > 690 ?
+                    <img src={Buttonplus} alt="" />
+                    :
+                    <img src={Buttonplus} alt="" />
+                }
                 {
                     screen > 690 ?
                     <h3 className="h3_2">New Invoice</h3>

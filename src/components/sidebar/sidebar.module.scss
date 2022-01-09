@@ -52,9 +52,9 @@
 
 @media only screen and (max-width: 900px) {
     .body {
-        height: min(8rem, 10vh);
         max-width: 100vw;
         width: 100vw;
+        height: min(8rem, 9vh);
 
 
 
@@ -69,20 +69,38 @@
         flex-direction: row;
         overflow: hidden;
 
+        height: 100%;
+
         &_first{
-            width: 7.6rem;
-            height: 8rem;
+            width: 76px;
+            height: 100%;
         }
 
         &_second{
-            width: 8.7rem;
-            height: 8rem;
+            width: 87px;
+            height: 100%;
             border-top: none;
             border-left: 1px solid #979797;
         }
     }
 
     .top{
-        max-width: 8rem;
+        max-width: 80px
+
     }
 }
+
+@media only screen and (max-width: 350px) {
+    .bottom{
+        align-items: flex-start;
+
+        &_first{
+            height: 100%;
+        }
+
+        &_second{
+            align-items: flex-start;
+            padding-top: 15px;
+        }
+    }
+   }

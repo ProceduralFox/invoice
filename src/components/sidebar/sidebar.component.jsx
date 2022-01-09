@@ -22,8 +22,7 @@ const Sidebar = ({ changeMode, mode }) => {
 
     const signIn = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {
-                console.log(result)
+            .then(() => {
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
