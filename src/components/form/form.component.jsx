@@ -252,7 +252,7 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
             <form action="" onSubmit={(e)=>e.preventDefault()}>
             <div className={`${mode.light ? styles.light : styles.dark} ${styles.main}`}>
                 <div className={`${mode.light ? styles.light : styles.dark} ${styles.title}`}>
-                    <div className="h1">{edit ? <h1 className="h2_2">Edit<span>#</span>{edit}</h1> : <h2 className="h2_2">New Invoice</h2>}</div>
+                    {edit ? <h2 className="h2_2">Edit<span>#</span>{edit}</h2> : <h2 className="h2_2">New Invoice</h2>}
                 </div>
 
                 <div className={`${mode.light ? styles.light : styles.dark} ${styles.inner}`}>

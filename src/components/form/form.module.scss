@@ -22,7 +22,7 @@
     width: 65rem;
     height: 100vh;
 
-    border-radius: 1.5rem;
+    border-radius: 0 1.5rem 0 1.5rem;
 
     overflow: hidden;
 
@@ -165,6 +165,19 @@ label{
 .dark{
     background: $dark3;
 
+
+    >h2{
+        color: white;
+
+        >span{
+            color: $medium2;
+        }
+    }
+
+    >span{
+        color: $medium2;
+    }
+
     > label:not(.error), em, p{
         color: $light1;
         font-style: normal;
@@ -192,6 +205,15 @@ label{
 
 .light{
     background: #FFFFFF;
+
+    >h2{
+        color: black;
+
+        >span{
+            color: $medium2;
+        }
+    }
+
 
     > label:not(.error){
         color: $medium1;
@@ -272,6 +294,7 @@ h1 > span{
 .title{
     margin-bottom: 3vh;
     margin-top: 3vh;
+
 }
 
 
