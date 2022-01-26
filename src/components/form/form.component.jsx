@@ -141,7 +141,6 @@ const InvoiceForm = ({ mode, data, experiment, edit, toggleForm, editData }) => 
 
                 tempInvoice.uid = tempUid
             } else {
-                window.alert("You are either not logged in or attempting to edit or delete an invoice which you did not create!")
                 console.log("You are trying to write a new invoice even though you are not signed in. Please sign in using Github in the bottom left corner")
             }
         }
