@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# App premise and architecture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This App is one in a collection of projects that I've built to design provided by https://www.frontendmentor.io/. I've done several of these because I believe that a design-to-code workflow is common in many companies and I've wanted to demonstrate my ability to work to an assignment. I was provided with figma files, and a desired feature description and the implementation was all on me.
 
-## Available Scripts
+The App uses React Router to conditional render one of two components corresponding to the list of all invoices and a detailed view of a selected invoice alongside a sidebar and a hidden component which handles creating or editing invoices. Light/Dark mode is handled by a Redux global state value which is then used to conditionally render classes. Redux is also used to handle the presence of the create/edit invoice component which simply returns a null if the respective reducer state value is not toggled on and returns the given component if it is. Given that the UI and even the behavior between creating an invoice and editing an invoice is very similar  I've decided to have them both be included in a single component and have their relative differences be active based on the current url.
 
-In the project directory, you can run:
+Data security is handled primarily on the back-end using firebase security rules that I've defined and so the front-end primarily just runs an alert informing the user of why their CRUD action has failed. Github OAuth is used for the authentication. I am generally a big proponent of OAuth over traditional authorization with an account and password on every and each website because I believe it greatly improves the user experience. 
 
-### `yarn start`
+Form validation is handled by a custom function that has different validation standards depending on whether the user is saving the invoice as a draft or as a final version. The create/edit component is the largest component off the app jsx wise and I believe that in the future I would try to write the data writing and validation functions in a separate file with a bit cleaner flow so that their presence wouldn't hinder the readability of the main UI rendering component file.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Most valuable lesson
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The most notable lesson from this project was I'd say the importance of approaching the design file as an ideal result if possible, but not as absolute dogma. Several times during the making of this app I noticed design decisions which did not scale well when there was for example a different amount of entries in a given array compared to what was present on the figma file and so I've reworked them to fit within the overall design system but be largely input agnostic.(within the given schema of course)
